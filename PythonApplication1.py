@@ -4,12 +4,14 @@ import subprocess
 import winapps
 import difflib as df
 
+
 #запись списка установленных программ 
 def w_f(name): 
     f = open(name,'w')
     try:
         for apps in winapps.list_installed():
             f.write(apps.name)
+            f.write('\n')
     except:
         print()
     f.close()
@@ -35,6 +37,7 @@ def command_1():
     print('Enter file name:')
     name = input()
     w_f(name)
+    print('--- DONE!\n')
 #оформление сравнения файлов со списками программ
 def command_2():
     print('Enter the name of the first file:')
@@ -47,10 +50,12 @@ def command_2():
         dif(f1,f2)
     else:
         print('--- No changes!')
+    print('--- DONE!\n')
 #сравнивание и вывод различий в списках
 def dif(f1,f2):
     txt1_list = r_f(f1)
     txt2_list = r_f(f2)
+
 
     d = df.Differ()
     diff = df.unified_diff(txt1_list, txt2_list, lineterm='')
@@ -61,18 +66,18 @@ a = gui()
 while a != 0:
     if a == 1:
         command_1()
-        print('---')
+        print('\n---')
         a = gui()
     else: 
         if a == 2:
             try:
                 command_2()
             except:
-                   print('invalid input') 
+                   print('\n--- error :(') 
             print('---')
             a = gui()
         else: 
-            print('--- Wrong answer. Repeat, please')
+            print('\n--- Wrong answer. Repeat, please')
             print('---')
             a = gui()
 
