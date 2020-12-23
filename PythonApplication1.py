@@ -15,6 +15,7 @@ def w_f(name):
     except:
         print()
     f.close()
+
 #чтение файла, вывод текста
 def r_f(name):
     file = open(name)
@@ -22,6 +23,7 @@ def r_f(name):
     print(name)
     file.close()
     return text
+
 #меню    
 def gui():
     print('- MENU -')
@@ -32,12 +34,14 @@ def gui():
     print()
     print('Enter the command number:')
     return int(input())
+
 #оформление записи списка программ
 def command_1():
     print('Enter file name:')
     name = input()
     w_f(name)
     print('--- DONE!\n')
+
 #оформление сравнения файлов со списками программ
 def command_2():
     print('Enter the name of the first file:')
@@ -51,11 +55,11 @@ def command_2():
     else:
         print('--- No changes!')
     print('--- DONE!\n')
+
 #сравнивание и вывод различий в списках
 def dif(f1,f2):
     txt1_list = r_f(f1)
     txt2_list = r_f(f2)
-
 
     d = df.Differ()
     diff = df.unified_diff(txt1_list, txt2_list, lineterm='')
@@ -66,7 +70,7 @@ a = gui()
 while a != 0:
     if a == 1:
         command_1()
-        print('\n---')
+        print('\n-')
         a = gui()
     else: 
         if a == 2:
@@ -74,9 +78,9 @@ while a != 0:
                 command_2()
             except:
                    print('\n--- error :(') 
-            print('---')
+            print('-')
             a = gui()
         else: 
-            print('\n--- Wrong answer. Repeat, please')
+            print('\n--- Wrong answer. Repeat, please\n')
             print('---')
             a = gui()
