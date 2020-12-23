@@ -80,4 +80,3 @@ while a != 0:
             print('\n--- Wrong answer. Repeat, please')
             print('---')
             a = gui()
-
