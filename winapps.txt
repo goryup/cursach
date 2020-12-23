@@ -1,0 +1,26 @@
+winapps - библиотека Python для управления установленными приложениями в Windows
+
+Печать установленных приложений
+
+import winapps
+
+for app in winapps.list_installed():
+    print(app)
+
+Поиск приложений
+
+import winapps
+
+for app in winapps.search_installed('tortoisehg'):
+    print(app)
+
+удаление приложений
+
+import winapps
+
+# Assuming you have exactly one installed Notepad++
+[npp] = winapps.search_installed('Notepad++')
+npp.uninstall('/S')
+
+# Simpler universal variant (uninstall all Notepad++ applications)
+winapps.uninstall('Notepad++', args=['/S'])
