@@ -1,6 +1,4 @@
-#import argparse
 import filecmp
-import subprocess
 import winapps
 import difflib as df
 
@@ -23,6 +21,15 @@ def r_f(name):
     print(name)
     file.close()
     return text
+
+#сравнивание и вывод различий в списках
+def dif(f1,f2):
+    txt1_list = r_f(f1)
+    txt2_list = r_f(f2)
+
+    d = df.Differ()
+    diff = df.unified_diff(txt1_list, txt2_list, lineterm='')
+    print('\n'.join(diff))
 
 #меню    
 def gui():
@@ -56,14 +63,7 @@ def command_2():
         print('--- No changes!')
     print('--- DONE!\n')
 
-#сравнивание и вывод различий в списках
-def dif(f1,f2):
-    txt1_list = r_f(f1)
-    txt2_list = r_f(f2)
 
-    d = df.Differ()
-    diff = df.unified_diff(txt1_list, txt2_list, lineterm='')
-    print('\n'.join(diff))
 
    
 a = gui()
